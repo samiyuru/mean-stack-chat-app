@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Samiyuru's node demo</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+</head>
+<body>
+
+<div class="loginBg">
+    <div class="login">
+        <input placeholder="Your name" type="text"/>
+        <button>OK</button>
+    </div>
+</div>
+
+<div style="display: none;" class="content">
+    <div class="chat-space">
+        <div id="scroller" class="chat-scroller">
+            <div class="chat-msg left">
+                <div class="arrow"></div>
+                <div class="from">Samiyuru Senarathne</div>
+                <div class="body">This is the message body</div>
+            </div>
+            <div class="chat-msg right">
+                <div class="arrow"></div>
+                <div class="from">Other Name</div>
+                <div class="body">This is the message body of this message</div>
+            </div>
+        </div>
+    </div>
+    <textarea placeholder="Your message" class="chat-text"></textarea>
+</div>
+
+<script type="text/javascript" src="js/libs/angular.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript">
+    function scrollBottom() {
+        var scroller = document.getElementById("scroller");
+        scroller.scrollTop = scroller.scrollHeight;
+    }
+</script>
+</body>
+</html>
