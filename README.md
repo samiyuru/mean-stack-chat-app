@@ -1,8 +1,11 @@
 mean-stack-chat-app
 ===================
 
-This code is associated with the mean technology stack training.
+This code is associated with the Chamber of Xians Mean Stack training by Samiyuru Senarathne.
 
+Download Node & MongoDB:
+http://nodejs.org/download/
+http://www.mongodb.org/downloads
 
 In our training session we implemented the client-side of our 'group chat app' with angular js except the server comunication.
 Sever was implemented to map client-side static files to root url using express js.
