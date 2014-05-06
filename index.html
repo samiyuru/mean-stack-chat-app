@@ -1,34 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="chatapp">
 <head>
     <title>Samiyuru's node demo</title>
     <link rel="stylesheet" type="text/css" href="css/styles.css"/>
 </head>
-<body>
+<body ng-controller="chatCtrl">
 
-<div class="loginBg">
+<div ng-if="!ui.isName" class="loginBg">
     <div class="login">
-        <input placeholder="Your name" type="text"/>
-        <button>OK</button>
+        <input ng-model="msg.sender" placeholder="Your name" type="text"/>
+        <button ng-click="enter()">OK</button>
     </div>
 </div>
 
-<div style="display: none;" class="content">
+<div ng-if="ui.isName" class="content">
     <div class="chat-space">
         <div id="scroller" class="chat-scroller">
-            <div class="chat-msg left">
+            <div ng-repeat="m in msgs" class="chat-msg" ng-class="{left:!m.isMe, right:m.isMe}">
                 <div class="arrow"></div>
-                <div class="from">Samiyuru Senarathne</div>
-                <div class="body">This is the message body</div>
+                <div class="from">{{m.sender}}</div>
+                <div class="body">{{m.text}}</div>
             </div>
-            <div class="chat-msg right">
+            <!--div class="chat-msg right">
                 <div class="arrow"></div>
                 <div class="from">Other Name</div>
                 <div class="body">This is the message body of this message</div>
-            </div>
+            </div-->
         </div>
     </div>
-    <textarea placeholder="Your message" class="chat-text"></textarea>
+    <textarea ng-keypress="key($event)" ng-model="msg.text" placeholder="Your message" class="chat-text"></textarea>
 </div>
 
 <script type="text/javascript" src="js/libs/angular.js"></script>
