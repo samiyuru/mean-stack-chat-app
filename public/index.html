@@ -16,7 +16,7 @@
 <div ng-if="ui.isName" class="content">
     <div class="chat-space">
         <div id="scroller" class="chat-scroller">
-            <div ng-repeat="m in msgs" class="chat-msg" ng-class="{left:!m.isMe, right:m.isMe}">
+            <div ng-repeat="m in msgs" class="chat-msg" ng-class="{left:!m.isMe, right:m.isMe}" scrolldown>
                 <div class="arrow"></div>
                 <div class="from">{{m.sender}}</div>
                 <div class="body">{{m.text}}</div>

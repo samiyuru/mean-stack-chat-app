@@ -11,22 +11,9 @@ app.controller("chatCtrl", function ($scope, $http) {
         isName: false
     };
 
+    var lTime = 0;
+
     var msgs = [
-        {
-            sender: "Samiyuru",
-            text: " ksdjhf kjsdhfk ds",
-            isMe: true
-        },
-        {
-            sender: "Hasith",
-            text: " ksdjhf kjsdhfk ds",
-            isMe: false
-        },
-        {
-            sender: "Rasika",
-            text: "sjkdfhskdj f",
-            isMe: false
-        }
     ];
 
     var msg = {
@@ -34,8 +21,36 @@ app.controller("chatCtrl", function ($scope, $http) {
         text: ""
     };
 
+    function loadMsgs(_lTime) {
+        $http({
+            method: "GET",
+            url: "/msg",
+            params: {
+                me: msg.sender,
+                time: _lTime
+            }
+        }).success(function (status) {
+                if (status.success) {
+                    var _msgs = status.data;
+                    var len = _msgs.length;
+                    for (var i = 0; i < len; i++) {
+                        var _msg = _msgs[i];
+                        _msg.isMe = false;
+                        msgs.push(_msg);
+                    }
+                    lTime = status.lTime;
+                } else {
+                    alert(status.err);
+                }
+            });
+    }
+
     function enter() {
         ui.isName = true;
+        loadMsgs(lTime);
+        setInterval(function(){
+            loadMsgs(lTime);
+        }, 2000);
     }
 
     function key(e) {
@@ -50,6 +65,7 @@ app.controller("chatCtrl", function ($scope, $http) {
                         var _msg = status.data;
                         _msg.isMe = true;
                         msgs.push(_msg);
+                        msg.text = "";
                     } else {
                         alert(status.err);
                     }
@@ -64,4 +80,14 @@ app.controller("chatCtrl", function ($scope, $http) {
     $scope.enter = enter;
     $scope.key = key;
 
+});
+
+app.directive("scrolldown", function(){
+    function link(){
+        scrollBottom();
+    }
+    return {
+        restrict:'A',
+        link:link
+    };
 });
