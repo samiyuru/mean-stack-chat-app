@@ -1,7 +1,7 @@
 mean-stack-chat-app
 ===================
 
-This code is associated with the Chamber of Xians Mean Stack training by Samiyuru Senarathne.
+This code is associated with the 99X Technology Chamber of Xians Mean Stack training by Samiyuru Senarathne.
 
 Download Node:
 http://nodejs.org/download/
